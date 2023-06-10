@@ -1,11 +1,11 @@
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
 class Paper:
     name: str
-    doi: str
     url: str
     publication_date: str
-    authors: str
-    quotations: int  
+    authors: List[str]
+    quotations: int
