@@ -9,3 +9,4 @@ class Paper:
     publication_date: str
     authors: List[str]
     quotations: int
+    content: str = ''

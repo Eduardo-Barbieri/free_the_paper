@@ -12,5 +12,5 @@ class DataSource(ABC):
         ...
 
     @abstractmethod
-    def parse_html(self, *args, **kwargs) -> List[Paper]:
+    def parse_html(self, *args, **kwargs): 
         ...
