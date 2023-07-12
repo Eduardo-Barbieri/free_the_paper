@@ -22,18 +22,18 @@ class SciHub(DataSource):
                 }
         for mirror in mirrors:
             try:
-                response = self.session.get(url=f"https://{mirror}/{body['request']}")
+                response = self.session.get(
+                        url=f"https://{mirror}/{body['request']}"
+                        )
                 return response
             except Exception:
                 raise NoUrlAvailableError
 
-    def parse_html(self, response: requests.Response):
+    def parse_html(self, response: requests.Response, paper: Paper):
         soup = bs4.BeautifulSoup(response.content, "html.parser")
         pdf_path = soup.find("embed").get("src")
         pdf_path = pdf_path[:pdf_path.find("#")]
         pdf = self.session.get(url=f"https:{pdf_path}")
-        ...
-
-
-    def get_paper_content(self):
-        ...
+        assert pdf.ok
+        paper.content = pdf.content
+        return paper
