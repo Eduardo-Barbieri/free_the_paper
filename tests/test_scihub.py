@@ -17,12 +17,13 @@ paper = Paper(
         authors=[""],
         quotations=1
         )
+pdf_html = sci.get_html(paper)
+pdf = sci.parse_html(pdf_html, paper)
 
 
 class TestingSchoolarGoogle(unittest.TestCase):
     def test_scihub_get(self):
-        self.assertEqual(sci.get_html(paper).status_code, 200)
+        self.assertEqual(pdf_html.status_code, 200)
 
     def test_scihub_parse_html(self):
-        sci.parse_html(sci.get_html(paper))
-        ...
+        self.assertEqual(pdf.content, bytes)
