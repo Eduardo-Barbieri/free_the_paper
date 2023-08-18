@@ -29,7 +29,9 @@ class SchoolarGoogle(DataSource):
         papers = []
         for paper_div in papers_div:
             autor_date = paper_div.find("div", {"class": "gs_a"}).get_text()
-            date = autor_date[autor_date.rfind('-') - 5:autor_date.rfind('-') - 1]
+            date = autor_date[
+                autor_date.rfind('-') - 5:autor_date.rfind('-') - 1
+            ]
             autors = autor_date[:autor_date.find('-')].replace(u'\xa0', '').split(',')
             # TODO:
             for extra_refs in paper_div.find("div",{"class": "gs_fl"}):

@@ -18,3 +18,7 @@ class NoUrlAvailableError(Exception):
 
 class ResponseContentError(Exception):
     pass
+
+
+class WordsNotFoundError(Exception):
+    pass
